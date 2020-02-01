@@ -12,6 +12,7 @@ public class LimitOfInference {
     }
 
     public static void main(String[] args) {
+        // in SE5 cannot compile ,in SE11 can compile
         f(New.map());
     }
 }
