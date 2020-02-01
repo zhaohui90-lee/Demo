@@ -30,26 +30,42 @@ public class CoffeeGenerator implements Generator<Coffee>,Iterable<Coffee> {
 
     @Override
     public Iterator<Coffee> iterator() {
-        return new CoffeeIterator();
+        return new Iterator<Coffee>() {
+            int count = size;
+
+            @Override
+            public boolean hasNext() {
+                return count > 0;
+            }
+
+            @Override
+            public Coffee next() {
+                count--;
+                return CoffeeGenerator.this.next();
+            }
+            public void remove(){
+                throw new UnsupportedOperationException();
+            }
+        };
     }
 
-    class CoffeeIterator implements Iterator<Coffee>{
-        int count = size;
-
-        @Override
-        public boolean hasNext() {
-            return count > 0;
-        }
-
-        @Override
-        public Coffee next() {
-            count--;
-            return CoffeeGenerator.this.next();
-        }
-        public void remove(){
-            throw new UnsupportedOperationException();
-        }
-    }
+//    class CoffeeIterator implements Iterator<Coffee>{
+//        int count = size;
+//
+//        @Override
+//        public boolean hasNext() {
+//            return count > 0;
+//        }
+//
+//        @Override
+//        public Coffee next() {
+//            count--;
+//            return CoffeeGenerator.this.next();
+//        }
+//        public void remove(){
+//            throw new UnsupportedOperationException();
+//        }
+//    }
 
     public static void main(String[] args) {
         CoffeeGenerator cg = new CoffeeGenerator();
