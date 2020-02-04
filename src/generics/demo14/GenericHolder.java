@@ -15,3 +15,4 @@ public class GenericHolder<T> {
         String s = genericHolder.get();
     }
 }
+ 
