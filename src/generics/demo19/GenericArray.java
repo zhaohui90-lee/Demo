@@ -19,6 +19,9 @@ public class GenericArray<T> {
     public static void main(String[] args) {
         GenericArray<Integer> gai = new GenericArray<>(10);
         Object[] oa = gai.rep();
-        System.out.println(oa.getClass());
+//        System.out.println(oa.getClass());
+        for (Object o : oa) {
+            System.out.print(o + " ");
+        }
     }
 }
